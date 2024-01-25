@@ -21,7 +21,17 @@
                 throw new NotFoundException("Le texte de la recherche doit contenir au moins 2 caractères.");
             }
 
-            return _villes;
+            List<string> result = new List<string>();
+
+            foreach (var ville in _villes)
+            {
+                if (ville.StartsWith(mot, StringComparison.OrdinalIgnoreCase))
+                {
+                    result.Add(ville);
+                }
+            }
+
+            return result;
         }
     }
 }
